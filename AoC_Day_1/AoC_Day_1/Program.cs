@@ -1,21 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Odbc;
 using System.IO;
 using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
-using Newtonsoft.Json;
 
-
-namespace AoC_D1
+namespace AoC_Day_1
 {
     class Program
     {
-
         static void Main(string[] args)
         {
             StreamReader myfile = new StreamReader(@"C:\Users\joelr\source\repos\\AoC_D1\AoC_D1\data\numbers.txt");
