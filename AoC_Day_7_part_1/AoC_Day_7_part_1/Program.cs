@@ -70,10 +70,13 @@ namespace AoC_Day_7_part_1
             }
 
 
-            SearchContent(Bags[0]);
+            for (int i = 0; i < Bags.Count; i++)
+            {
+                SearchContent(Bags[i], Bags[i]);
+            }
            
-
-            Console.WriteLine(counter);
+            
+            Console.WriteLine(SampledBags.Count);
             Console.ReadKey();
         }
 
@@ -86,19 +89,17 @@ namespace AoC_Day_7_part_1
 
 
 
-        public static void SearchContent(Bag initialBag)
+        public static void SearchContent(Bag initialBag, Bag rootBag)
         {
             //fuchsia
             Bag bag = initialBag;
-          
-
+            
 
             if(bag.InnerBags.Count == 0)
             {
-                var x = Bags[Math.Max(Bags.Count -1, Bags.IndexOf(bag) + 1)];
-                SearchContent(x);
                 return;
             }
+
 
             for (int j = 0; j < bag.InnerBags.Count; j++)
             {
@@ -107,30 +108,14 @@ namespace AoC_Day_7_part_1
 
                 if (innerbag.Name == "shiny gold")
                 {
-                    Console.WriteLine($"Root bag name: {bag.Name}");
-                    if (!SampledBags.Contains(bag))
+                    if (!SampledBags.Contains(rootBag))
                     {
-                        SampledBags.Add(bag);
-                        counter++;
+                        SampledBags.Add(rootBag);
                     }
                 }
 
-                SearchContent(innerbag);
+                SearchContent(innerbag, rootBag);
 
-
-                //if (SampledBags.Any(x => x.Name == innerbag.Name) )
-                //{
-                //    Console.WriteLine($"Root bag name: {bag.Name}");
-
-                //    if (!SampledBags.Contains(bag))
-                //    {
-                //        SampledBags.Add(bag);
-                //    }
-                //    counter++;
-                //}
-
-
-                //SearchContent(innerbag);
             }
         }
 
